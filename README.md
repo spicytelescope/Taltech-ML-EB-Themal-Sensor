@@ -33,4 +33,4 @@ Just `cd` into the `src` directory and run the `train_model` using `python > 3.8
 The model is fully customizable by changing the lines in the `config.py` file !
 Suit yourself.
 
-Also, you can automatically tune the hyper-parameters by running the `tune_parameters.py` file.# Taltech-ML-EB-Themal-Sensor
+Also, you can automatically tune the hyper-parameters by running the `tune_parameters.py` file.
