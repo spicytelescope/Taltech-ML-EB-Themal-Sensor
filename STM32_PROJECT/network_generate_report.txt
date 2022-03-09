@@ -1,0 +1,119 @@
+Neural Network Tools for STM32 v1.4.0 (AI tools v5.2.0)
+Created date       : 2021-12-13 01:26:20
+Parameters         : generate --name network -m C:/Users/jbezi/Downloads/model_extended.tflite --type tflite --compression 1 --verbosity 1 --workspace C:\Users\jbezi\AppData\Local\Temp\mxAI_workspace4908902345360014204084349275613666 --output C:\Users\jbezi\.stm32cubemx
+
+Exec/report summary (generate dur=0.92s err=0)
+------------------------------------------------------------------------------------------------------------------------
+model file         : C:\Users\jbezi\Downloads\model_extended.tflite
+type               : tflite (tflite) 
+c_name             : network
+compression        : None
+quantize           : None
+workspace dir      : C:\Users\jbezi\AppData\Local\Temp\mxAI_workspace4908902345360014204084349275613666
+output dir         : C:\Users\jbezi\.stm32cubemx
+
+model_name         : model_extended
+model_hash         : e6d65e2ed137d2ccdb8b8631e09b2c7f
+input              : serving_default_flatten_input0 [1024 items, 4.00 KiB, ai_float, FLOAT32, (1, 32, 32)]
+inputs (total)     : 4.00 KiB
+output             : dense_3 [1 items, 4 B, ai_float, FLOAT32, (1, 1, 1)]
+outputs (total)    : 4 B
+params #           : 88,561 items (345.94 KiB)
+macc               : 88,560
+weights (ro)       : 354,244 B (345.94 KiB) 
+activations (rw)   : 640 B (640 B) 
+ram (total)        : 4,740 B (4.63 KiB) = 640 + 4,096 + 4
+
+------------------------------------------------------------------------------------------------------------------------
+id  layer (type)                           output shape      param #     connected to             macc           rom                
+------------------------------------------------------------------------------------------------------------------------
+0   serving_default_flatten_input0 (Input) (1, 32, 32)                                                                              
+    reshape_0 (Reshape)                    (1024,)                       serving_default_flatten_                                   
+------------------------------------------------------------------------------------------------------------------------
+1   dense_1 (Dense)                        (80,)             82,000      reshape_0                81,920         328,000            
+    nl_1 (Nonlinearity)                    (80,)                         dense_1                  80                                
+------------------------------------------------------------------------------------------------------------------------
+2   dense_2 (Dense)                        (80,)             6,480       nl_1                     6,400          25,920             
+    nl_2 (Nonlinearity)                    (80,)                         dense_2                  80                                
+------------------------------------------------------------------------------------------------------------------------
+3   dense_3 (Dense)                        (1,)              81          nl_2                     80             324                
+------------------------------------------------------------------------------------------------------------------------
+model_extended p=88561(345.94 KBytes) macc=88560 rom=345.94 KBytes ram=640 B io_ram=4.00 KiB
+
+
+
+Generated C-graph summary
+------------------------------------------------------------------------------------------------------------------------
+model name         : model_extended
+c-name             : network
+c-node #           : 5
+c-array #          : 12
+activations size   : 640
+weights size       : 354244
+macc               : 88560
+inputs             : ['serving_default_flatten_input0_output_array']
+outputs            : ['dense_3_output_array']
+
+
+C-Arrays (12)
+------------------------------------------------------------------------------------------------------------------------
+c_id  name (*_array)                         item/size           mem-pool     c-type       fmt    comment            
+------------------------------------------------------------------------------------------------------------------------
+0     dense_3_bias                           1/4                 weights      const float  float                     
+1     dense_3_weights                        80/320              weights      const float  float                     
+2     dense_2_bias                           80/320              weights      const float  float                     
+3     dense_2_weights                        6400/25600          weights      const float  float                     
+4     dense_1_bias                           80/320              weights      const float  float                     
+5     dense_1_weights                        81920/327680        weights      const float  float                     
+6     serving_default_flatten_input0_output  1024/4096           user         float        float  /input             
+7     dense_1_output                         80/320              activations  float        float                     
+8     nl_1_output                            80/320              activations  float        float                     
+9     dense_2_output                         80/320              activations  float        float                     
+10    nl_2_output                            80/320              activations  float        float                     
+11    dense_3_output                         1/4                 user         float        float  /output            
+------------------------------------------------------------------------------------------------------------------------
+
+
+C-Layers (5)
+------------------------------------------------------------------------------------------------------------------------
+c_id  name (*_layer)  id  type   macc        rom         tensors                                    shape (array id)                       
+------------------------------------------------------------------------------------------------------------------------
+0     dense_1         1   dense  81920       328000      I: serving_default_flatten_input0_output0  [1, 1, 1, 1024] (6)                    
+                                                         W: dense_1_weights                                                                
+                                                         W: dense_1_bias                                                                   
+                                                         O: dense_1_output                          [1, 1, 1, 80] (7)                      
+------------------------------------------------------------------------------------------------------------------------
+1     nl_1            1   nl     80          0           I: dense_1_output                          [1, 1, 1, 80] (7)                      
+                                                         O: nl_1_output                             [1, 1, 1, 80] (8)                      
+------------------------------------------------------------------------------------------------------------------------
+2     dense_2         2   dense  6400        25920       I: nl_1_output                             [1, 1, 1, 80] (8)                      
+                                                         W: dense_2_weights                                                                
+                                                         W: dense_2_bias                                                                   
+                                                         O: dense_2_output                          [1, 1, 1, 80] (9)                      
+------------------------------------------------------------------------------------------------------------------------
+3     nl_2            2   nl     80          0           I: dense_2_output                          [1, 1, 1, 80] (9)                      
+                                                         O: nl_2_output                             [1, 1, 1, 80] (10)                     
+------------------------------------------------------------------------------------------------------------------------
+4     dense_3         3   dense  80          324         I: nl_2_output                             [1, 1, 1, 80] (10)                     
+                                                         W: dense_3_weights                                                                
+                                                         W: dense_3_bias                                                                   
+                                                         O: dense_3_output                          [1, 1, 1, 1] (11)                      
+------------------------------------------------------------------------------------------------------------------------
+
+
+ 
+Complexity per-layer - macc=88,560 rom=354,244
+------------------------------------------------------------------------------------------------------------------------
+id      layer (type)                           macc                                    rom                                    
+------------------------------------------------------------------------------------------------------------------------
+1       dense_1 (Dense)                        |||||||||||||||||||||||||||||||  92.5%  |||||||||||||||||||||||||||||||  92.6% 
+1       nl_1 (Nonlinearity)                    |                                 0.1%  |                                 0.0% 
+2       dense_2 (Dense)                        |||                               7.2%  |||                               7.3% 
+2       nl_2 (Nonlinearity)                    |                                 0.1%  |                                 0.0% 
+3       dense_3 (Dense)                        |                                 0.1%  |                                 0.1% 
+------------------------------------------------------------------------------------------------------------------------
+
+
+Evaluation report (summary)
+---------------------------------------------
+NOT EVALUATED

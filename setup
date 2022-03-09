@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "[*] Installing required packages ..."
+
+pip install -r requirements.txt
+
+echo "[+] Done. The project can now be compiled and run using ./RUN"

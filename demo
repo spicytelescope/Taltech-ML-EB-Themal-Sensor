@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# echo "Loading virtualenv"
+
+# source .venv/bin/activate
+
+echo "[IAS0360 Machine Learning for Embedded Systems] - Final project demonstration"
+echo "===================================================="
+
+python3 src/demo.py ./data/demo_dataset.txt ./models/model_extended
+
+python3 ./data/helpers/visualize_json_image.py ./data/demo_dataset.txt 0 7 ./data/demo_heatmaps
+
+echo "===================================================="
+echo "Done."

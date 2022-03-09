@@ -1,0 +1,415 @@
+{
+    "_allocate_inputs": 0,
+    "_allocate_outputs": 0,
+    "cli_parameters": "generate --name network -m C:/Users/jbezi/Downloads/model_extended.tflite --type tflite --compression 1 --verbosity 1 --workspace C:\\Users\\jbezi\\AppData\\Local\\Temp\\mxAI_workspace4908902345360014204084349275613666 --output C:\\Users\\jbezi\\.stm32cubemx",
+    "cli_version": {
+        "major": 1,
+        "micro": 0,
+        "minor": 4
+    },
+    "cli_version_str": "1.4.0",
+    "compression": {
+        "factor": null,
+        "layers": {}
+    },
+    "date_time": "Mon Dec 13 01:26:20 2021",
+    "error": 0,
+    "error_str": [],
+    "evaluation_measures": [],
+    "evaluation_status": "NOT EVALUATED",
+    "exec_cmd": "generate",
+    "exec_duration": 0.9194917678833008,
+    "hash": "e6d65e2ed137d2ccdb8b8631e09b2c7f",
+    "inputs": [
+        "serving_default_flatten_input0"
+    ],
+    "l2_error": -1.0,
+    "l2_status": "NOT EVALUATED",
+    "layers": [
+        {
+            "extras": {
+                "c_l2_error": 0,
+                "c_l2_id": -1,
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_n_params": 0,
+                "rom_output": {
+                    "c_size": 4096,
+                    "fmt": {
+                        "c_bits": [
+                            32,
+                            0
+                        ],
+                        "c_format": "AI_ARRAY_FORMAT_FLOAT",
+                        "c_size": 4,
+                        "c_type": "ai_float",
+                        "format": "FLOAT32"
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        1024,
+                        1
+                    ]
+                },
+                "rom_size": 0,
+                "rom_size_params": 0,
+                "rom_trans": null
+            },
+            "id": 0,
+            "inputs": [],
+            "name": "serving_default_flatten_input0",
+            "out_shapes": [
+                [
+                    32,
+                    1,
+                    32
+                ]
+            ],
+            "outputs": [
+                "serving_default_flatten_input0"
+            ],
+            "shape": [
+                32,
+                1,
+                32
+            ],
+            "type": "Input"
+        },
+        {
+            "extras": {
+                "c_l2_error": 0,
+                "c_l2_id": -1,
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_n_params": 0,
+                "rom_output": null,
+                "rom_size": 0,
+                "rom_size_params": 0,
+                "rom_trans": null
+            },
+            "id": 0,
+            "inputs": [
+                "serving_default_flatten_input0"
+            ],
+            "name": "reshape_0",
+            "out_shapes": [
+                [
+                    1024
+                ]
+            ],
+            "outputs": [
+                "reshape_0"
+            ],
+            "shape": [
+                1024
+            ],
+            "type": "Reshape"
+        },
+        {
+            "extras": {
+                "c_l2_error": 0,
+                "c_l2_id": -1,
+                "n_macc": 81920,
+                "n_params": 82000,
+                "psize": 328000,
+                "rom_n_params": 82000,
+                "rom_output": {
+                    "c_size": 320,
+                    "fmt": {
+                        "c_bits": [
+                            32,
+                            0
+                        ],
+                        "c_format": "AI_ARRAY_FORMAT_FLOAT",
+                        "c_size": 4,
+                        "c_type": "ai_float",
+                        "format": "FLOAT32"
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        80,
+                        1
+                    ]
+                },
+                "rom_size": 328000,
+                "rom_size_params": 328000,
+                "rom_trans": null
+            },
+            "id": 1,
+            "inputs": [
+                "reshape_0"
+            ],
+            "name": "dense_1",
+            "num_units": 80,
+            "out_shapes": [
+                [
+                    80
+                ]
+            ],
+            "outputs": [
+                "dense_1"
+            ],
+            "type": "Dense",
+            "use_bias": true
+        },
+        {
+            "extras": {
+                "c_l2_error": 0,
+                "c_l2_id": -1,
+                "n_macc": 80,
+                "n_params": 0,
+                "psize": 0,
+                "rom_n_params": 0,
+                "rom_output": {
+                    "c_size": 320,
+                    "fmt": {
+                        "c_bits": [
+                            32,
+                            0
+                        ],
+                        "c_format": "AI_ARRAY_FORMAT_FLOAT",
+                        "c_size": 4,
+                        "c_type": "ai_float",
+                        "format": "FLOAT32"
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        80,
+                        1
+                    ]
+                },
+                "rom_size": 0,
+                "rom_size_params": 0,
+                "rom_trans": null
+            },
+            "id": 1,
+            "inputs": [
+                "dense_1"
+            ],
+            "name": "nl_1",
+            "nonlinearity": "relu",
+            "out_shapes": [
+                [
+                    80
+                ]
+            ],
+            "outputs": [
+                "nl_1"
+            ],
+            "type": "Nonlinearity"
+        },
+        {
+            "extras": {
+                "c_l2_error": 0,
+                "c_l2_id": -1,
+                "n_macc": 6400,
+                "n_params": 6480,
+                "psize": 25920,
+                "rom_n_params": 6480,
+                "rom_output": {
+                    "c_size": 320,
+                    "fmt": {
+                        "c_bits": [
+                            32,
+                            0
+                        ],
+                        "c_format": "AI_ARRAY_FORMAT_FLOAT",
+                        "c_size": 4,
+                        "c_type": "ai_float",
+                        "format": "FLOAT32"
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        80,
+                        1
+                    ]
+                },
+                "rom_size": 25920,
+                "rom_size_params": 25920,
+                "rom_trans": null
+            },
+            "id": 2,
+            "inputs": [
+                "nl_1"
+            ],
+            "name": "dense_2",
+            "num_units": 80,
+            "out_shapes": [
+                [
+                    80
+                ]
+            ],
+            "outputs": [
+                "dense_2"
+            ],
+            "type": "Dense",
+            "use_bias": true
+        },
+        {
+            "extras": {
+                "c_l2_error": 0,
+                "c_l2_id": -1,
+                "n_macc": 80,
+                "n_params": 0,
+                "psize": 0,
+                "rom_n_params": 0,
+                "rom_output": {
+                    "c_size": 320,
+                    "fmt": {
+                        "c_bits": [
+                            32,
+                            0
+                        ],
+                        "c_format": "AI_ARRAY_FORMAT_FLOAT",
+                        "c_size": 4,
+                        "c_type": "ai_float",
+                        "format": "FLOAT32"
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        80,
+                        1
+                    ]
+                },
+                "rom_size": 0,
+                "rom_size_params": 0,
+                "rom_trans": null
+            },
+            "id": 2,
+            "inputs": [
+                "dense_2"
+            ],
+            "name": "nl_2",
+            "nonlinearity": "relu",
+            "out_shapes": [
+                [
+                    80
+                ]
+            ],
+            "outputs": [
+                "nl_2"
+            ],
+            "type": "Nonlinearity"
+        },
+        {
+            "extras": {
+                "c_l2_error": 0,
+                "c_l2_id": -1,
+                "n_macc": 80,
+                "n_params": 81,
+                "psize": 324,
+                "rom_n_params": 81,
+                "rom_output": {
+                    "c_size": 4,
+                    "fmt": {
+                        "c_bits": [
+                            32,
+                            0
+                        ],
+                        "c_format": "AI_ARRAY_FORMAT_FLOAT",
+                        "c_size": 4,
+                        "c_type": "ai_float",
+                        "format": "FLOAT32"
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        1,
+                        1
+                    ]
+                },
+                "rom_size": 324,
+                "rom_size_params": 324,
+                "rom_trans": null
+            },
+            "id": 3,
+            "inputs": [
+                "nl_2"
+            ],
+            "name": "dense_3",
+            "num_units": 1,
+            "out_shapes": [
+                [
+                    1
+                ]
+            ],
+            "outputs": [
+                "dense_3"
+            ],
+            "type": "Dense",
+            "use_bias": true
+        }
+    ],
+    "maxlen_name": 38,
+    "md5": "e6d65e2ed137d2ccdb8b8631e09b2c7f",
+    "model_files": [
+        "C:\\Users\\jbezi\\Downloads\\model_extended.tflite"
+    ],
+    "model_n_params": 88561,
+    "model_name": "model_extended",
+    "model_size": 354244,
+    "model_type": "tflite (tflite)",
+    "name": "network",
+    "outputs": [
+        "dense_3"
+    ],
+    "ram_io_size": [
+        4096,
+        4
+    ],
+    "ram_size": [
+        640,
+        640
+    ],
+    "report_version": 1.0,
+    "rom_cfact": null,
+    "rom_heap": [
+        0,
+        0
+    ],
+    "rom_heap_inspector": 1024,
+    "rom_inputs": [
+        {
+            "c_size": 4096,
+            "c_type": "ai_float",
+            "name": "serving_default_flatten_input0"
+        }
+    ],
+    "rom_l2_error_max": 0.0,
+    "rom_n_c_nodes": 5,
+    "rom_n_macc": 88560,
+    "rom_n_macc_max": 81920,
+    "rom_outputs": [
+        {
+            "c_size": 4,
+            "c_type": "ai_float",
+            "name": "dense_3"
+        }
+    ],
+    "rom_size": 354244,
+    "rom_size_max": 328000,
+    "rom_stack": [
+        0,
+        0
+    ],
+    "strategy": "heap_overlay_pool",
+    "tools_api_version": {
+        "major": 1,
+        "micro": 0,
+        "minor": 3
+    },
+    "tools_version": {
+        "extra": null,
+        "major": 5,
+        "micro": 0,
+        "minor": 2
+    },
+    "version": "0.2"
+}
